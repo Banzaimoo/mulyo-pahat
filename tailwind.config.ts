@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,18 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Mulyo Pahat custom colors
+				wood: {
+					light: '#e6d2b7',
+					medium: '#c8a978',
+					dark: '#8b572a',
+					darker: '#4e2e17',
+					darkest: '#33200f'
+				},
+				sand: {
+					light: '#f2eee6',
+					DEFAULT: '#e6dccb'
 				}
 			},
 			borderRadius: {
@@ -89,6 +102,14 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
+			},
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+				serif: ['Playfair Display', 'serif']
+			},
+			backgroundImage: {
+				'wood-texture': "url('/images/wood-texture.jpg')",
+				'sand-texture': "url('/images/sand-texture.jpg')"
 			}
 		}
 	},

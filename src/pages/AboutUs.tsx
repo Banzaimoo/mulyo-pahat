@@ -7,7 +7,7 @@ const AboutUs = () => {
       name: 'Robert Johnson',
       role: 'Founder & Master Craftsman',
       image: '/lovable-uploads/9809808c-bd68-4e2e-af87-b5ea99f6fe3c.png',
-      bio: 'With over 30 years of experience, Robert's passion for woodworking led him to establish Mulyo Pahat in 1992.'
+      bio: 'With over 30 years of experience, Robert\'s passion for woodworking led him to establish Mulyo Pahat in 1992.'
     },
     {
       name: 'Sarah Williams',

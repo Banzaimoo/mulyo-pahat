@@ -1,6 +1,11 @@
 
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
 const ProductsPage = () => {
   const { category } = useParams();
@@ -17,20 +22,20 @@ const ProductsPage = () => {
     { id: 'nightstand', name: 'Night Stand' }
   ];
   
-  // Product data (normally this would come from an API)
+  // Product data with updated images
   const products = [
-    { id: 1, name: 'Mid Century Modern Nightstand', category: 'nightstand', price: 299, image: '/lovable-uploads/9809808c-bd68-4e2e-af87-b5ea99f6fe3c.png' },
-    { id: 2, name: 'Teak Side Chair', category: 'chairs', price: 199, image: '/lovable-uploads/9809808c-bd68-4e2e-af87-b5ea99f6fe3c.png' },
-    { id: 3, name: 'Modern Bookshelf', category: 'shelves', price: 349, image: '/lovable-uploads/9809808c-bd68-4e2e-af87-b5ea99f6fe3c.png' },
-    { id: 4, name: 'Walnut Coffee Table', category: 'tables', price: 499, image: '/lovable-uploads/9809808c-bd68-4e2e-af87-b5ea99f6fe3c.png' },
-    { id: 5, name: 'Storage Cabinet', category: 'cabinet', price: 599, image: '/lovable-uploads/9809808c-bd68-4e2e-af87-b5ea99f6fe3c.png' },
-    { id: 6, name: 'Platform Bed Frame', category: 'bed', price: 899, image: '/lovable-uploads/9809808c-bd68-4e2e-af87-b5ea99f6fe3c.png' },
-    { id: 7, name: 'Two-Door Wardrobe', category: 'wardrobe', price: 1299, image: '/lovable-uploads/9809808c-bd68-4e2e-af87-b5ea99f6fe3c.png' },
-    { id: 8, name: 'Minimalist Nightstand', category: 'nightstand', price: 249, image: '/lovable-uploads/9809808c-bd68-4e2e-af87-b5ea99f6fe3c.png' },
-    { id: 9, name: 'Dining Chair Set', category: 'chairs', price: 799, image: '/lovable-uploads/9809808c-bd68-4e2e-af87-b5ea99f6fe3c.png' },
-    { id: 10, name: 'Wall-Mounted Shelf', category: 'shelves', price: 149, image: '/lovable-uploads/9809808c-bd68-4e2e-af87-b5ea99f6fe3c.png' },
-    { id: 11, name: 'Round Dining Table', category: 'tables', price: 649, image: '/lovable-uploads/9809808c-bd68-4e2e-af87-b5ea99f6fe3c.png' },
-    { id: 12, name: 'Media Console', category: 'cabinet', price: 549, image: '/lovable-uploads/9809808c-bd68-4e2e-af87-b5ea99f6fe3c.png' }
+    { id: 1, name: 'Mid Century Modern Nightstand', category: 'nightstand', price: 299, image: '/lovable-uploads/2c537559-9a72-4b4a-96f6-2f84a61cd717.png' },
+    { id: 2, name: 'Teak Side Chair', category: 'chairs', price: 199, image: '/lovable-uploads/064d8a7d-7f7c-4109-b7e5-e0ad75e783b9.png' },
+    { id: 3, name: 'Modern Bookshelf', category: 'shelves', price: 349, image: '/lovable-uploads/2c537559-9a72-4b4a-96f6-2f84a61cd717.png' },
+    { id: 4, name: 'Walnut Coffee Table', category: 'tables', price: 499, image: '/lovable-uploads/064d8a7d-7f7c-4109-b7e5-e0ad75e783b9.png' },
+    { id: 5, name: 'Storage Cabinet', category: 'cabinet', price: 599, image: '/lovable-uploads/2a60c225-99f7-48cb-b671-07609fded7c5.png' },
+    { id: 6, name: 'Platform Bed Frame', category: 'bed', price: 899, image: '/lovable-uploads/2c537559-9a72-4b4a-96f6-2f84a61cd717.png' },
+    { id: 7, name: 'Two-Door Wardrobe', category: 'wardrobe', price: 1299, image: '/lovable-uploads/2a60c225-99f7-48cb-b671-07609fded7c5.png' },
+    { id: 8, name: 'Minimalist Nightstand', category: 'nightstand', price: 249, image: '/lovable-uploads/2c537559-9a72-4b4a-96f6-2f84a61cd717.png' },
+    { id: 9, name: 'Dining Chair Set', category: 'chairs', price: 799, image: '/lovable-uploads/064d8a7d-7f7c-4109-b7e5-e0ad75e783b9.png' },
+    { id: 10, name: 'Wall-Mounted Shelf', category: 'shelves', price: 149, image: '/lovable-uploads/2c537559-9a72-4b4a-96f6-2f84a61cd717.png' },
+    { id: 11, name: 'Round Dining Table', category: 'tables', price: 649, image: '/lovable-uploads/064d8a7d-7f7c-4109-b7e5-e0ad75e783b9.png' },
+    { id: 12, name: 'Media Console', category: 'cabinet', price: 549, image: '/lovable-uploads/2a60c225-99f7-48cb-b671-07609fded7c5.png' }
   ];
   
   // Filter products based on active category
@@ -40,28 +45,45 @@ const ProductsPage = () => {
     
   return (
     <div className="min-h-screen bg-sand">
-      {/* Page Header */}
-      <div className="wood-bg-cover py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-serif text-white text-center">
-            {activeCategory === 'all' ? 'All Products' : categories.find(cat => cat.id === activeCategory)?.name}
-          </h1>
+      {/* Page Header - Split Hero */}
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="h-[50vh] bg-cover bg-center" style={{backgroundImage: `url('/lovable-uploads/2c537559-9a72-4b4a-96f6-2f84a61cd717.png')`}}>
+          <div className="h-full w-full bg-wood-darker bg-opacity-40 flex items-center justify-center">
+            <h2 className="text-3xl md:text-4xl font-serif text-white">Handcrafted Furniture</h2>
+          </div>
+        </div>
+        <div className="h-[50vh] bg-cover bg-center" style={{backgroundImage: `url('/lovable-uploads/4ace7f0d-178e-487c-9149-50b86b899d79.png')`}}>
+          <div className="h-full w-full bg-wood-darker bg-opacity-40 flex items-center justify-center">
+            <h2 className="text-3xl md:text-4xl font-serif text-white">Natural Materials</h2>
+          </div>
         </div>
       </div>
       
+      <div className="container mx-auto px-4 py-8 text-center">
+        <h1 className="text-4xl font-serif text-wood-darker mb-4">
+          {activeCategory === 'all' ? 'All Products' : categories.find(cat => cat.id === activeCategory)?.name}
+        </h1>
+        <p className="text-wood-dark max-w-2xl mx-auto mb-8">
+          Discover our collection of handcrafted furniture pieces, designed with attention to detail and built to last.
+        </p>
+      </div>
+      
       {/* Category Navigation */}
-      <div className="container mx-auto px-4 py-8 overflow-x-auto">
-        <div className="flex space-x-4 min-w-max pb-2">
-          {categories.map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`category-button ${activeCategory === cat.id ? 'active' : ''}`}
-            >
-              {cat.name}
-            </button>
-          ))}
-        </div>
+      <div className="container mx-auto px-4 py-8">
+        <Carousel className="w-full max-w-full">
+          <CarouselContent className="flex-nowrap">
+            {categories.map(cat => (
+              <CarouselItem key={cat.id} className="flex-none max-w-fit">
+                <button
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={`category-button whitespace-nowrap ${activeCategory === cat.id ? 'active' : ''}`}
+                >
+                  {cat.name}
+                </button>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
       </div>
       
       {/* Products Grid */}

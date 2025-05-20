@@ -46,7 +46,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[80vh] wood-bg-cover">
+      <section className="relative h-[80vh]" style={{backgroundImage: `url('/lovable-uploads/2c537559-9a72-4b4a-96f6-2f84a61cd717.png')`}}>
         <div className="absolute inset-0 bg-wood-darker bg-opacity-40 flex items-center">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl">
